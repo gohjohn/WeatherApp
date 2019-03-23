@@ -56,8 +56,16 @@
  8) 2h 10min mark. I realized I need another screen.
  The previous idea was a screen that summarized weather per day.
  I need a 3hr forecast screen where i will just put all the data.
- 
  Commiting code.
+ 
+ 9) 3h 30min mark. I am more or less done with Forecast Screen.
+ I think there is no time to do my desired Forecast summary screen where I group according to days
+ 
+ Current TODO:
+    - format the date string to SGT
+    - Data persistance
+    - Front Page
+ Commiting code
  
  
  

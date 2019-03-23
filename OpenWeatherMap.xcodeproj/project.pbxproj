@@ -14,6 +14,8 @@
 		EFFC4FBB2244EFEC00BC4FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFC4FB92244EFEC00BC4FEC /* LaunchScreen.storyboard */; };
 		EFFC4FC62244EFEC00BC4FEC /* OpenWeatherMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FC52244EFEC00BC4FEC /* OpenWeatherMapTests.swift */; };
 		EFFC4FD12245E6C000BC4FEC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD02245E6C000BC4FEC /* Api.swift */; };
+		EFFC4FD322461A9900BC4FEC /* ForecastFullTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD222461A9900BC4FEC /* ForecastFullTableViewController.swift */; };
+		EFFC4FD5224626B800BC4FEC /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD4224626B800BC4FEC /* Misc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		EFFC4FC52244EFEC00BC4FEC /* OpenWeatherMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapTests.swift; sourceTree = "<group>"; };
 		EFFC4FC72244EFEC00BC4FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFFC4FD02245E6C000BC4FEC /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		EFFC4FD222461A9900BC4FEC /* ForecastFullTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastFullTableViewController.swift; sourceTree = "<group>"; };
+		EFFC4FD4224626B800BC4FEC /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				EFFC4FB02244EFE900BC4FEC /* AppDelegate.swift */,
+				EFFC4FD4224626B800BC4FEC /* Misc.swift */,
 				EFFC4FB22244EFE900BC4FEC /* TestingViewController.swift */,
+				EFFC4FD222461A9900BC4FEC /* ForecastFullTableViewController.swift */,
 				EFFC4FB42244EFE900BC4FEC /* Main.storyboard */,
 				EFFC4FD02245E6C000BC4FEC /* Api.swift */,
 				EFFC4FB72244EFEC00BC4FEC /* Assets.xcassets */,
@@ -201,7 +207,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFFC4FD12245E6C000BC4FEC /* Api.swift in Sources */,
+				EFFC4FD322461A9900BC4FEC /* ForecastFullTableViewController.swift in Sources */,
 				EFFC4FB32244EFE900BC4FEC /* TestingViewController.swift in Sources */,
+				EFFC4FD5224626B800BC4FEC /* Misc.swift in Sources */,
 				EFFC4FB12244EFE900BC4FEC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
