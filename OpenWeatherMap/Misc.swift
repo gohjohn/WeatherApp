@@ -10,6 +10,13 @@ import UIKit
 
 
 class Misc{
+    static var dateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.timeZone = TimeZone.current
+        f.dateFormat = "dd' 'MMM' 'ha"
+        return f
+    }()
+    
     class func directionToString(direction:Double) -> String {
         var offsetDirection = direction + 22.5 //    360 / 8directions / 2
         while offsetDirection < 0 { offsetDirection += 360 }

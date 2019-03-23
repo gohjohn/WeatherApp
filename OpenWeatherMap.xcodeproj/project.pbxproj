@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EFFC4FB12244EFE900BC4FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FB02244EFE900BC4FEC /* AppDelegate.swift */; };
-		EFFC4FB32244EFE900BC4FEC /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FB22244EFE900BC4FEC /* TestingViewController.swift */; };
 		EFFC4FB62244EFE900BC4FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFC4FB42244EFE900BC4FEC /* Main.storyboard */; };
 		EFFC4FB82244EFEC00BC4FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFC4FB72244EFEC00BC4FEC /* Assets.xcassets */; };
 		EFFC4FBB2244EFEC00BC4FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFC4FB92244EFEC00BC4FEC /* LaunchScreen.storyboard */; };
@@ -31,7 +30,6 @@
 /* Begin PBXFileReference section */
 		EFFC4FAD2244EFE900BC4FEC /* OpenWeatherMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenWeatherMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFC4FB02244EFE900BC4FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFFC4FB22244EFE900BC4FEC /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		EFFC4FB52244EFE900BC4FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFFC4FB72244EFEC00BC4FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFFC4FBA2244EFEC00BC4FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 			children = (
 				EFFC4FB02244EFE900BC4FEC /* AppDelegate.swift */,
 				EFFC4FD4224626B800BC4FEC /* Misc.swift */,
-				EFFC4FB22244EFE900BC4FEC /* TestingViewController.swift */,
 				EFFC4FD222461A9900BC4FEC /* ForecastFullTableViewController.swift */,
 				EFFC4FB42244EFE900BC4FEC /* Main.storyboard */,
 				EFFC4FD02245E6C000BC4FEC /* Api.swift */,
@@ -208,7 +205,6 @@
 			files = (
 				EFFC4FD12245E6C000BC4FEC /* Api.swift in Sources */,
 				EFFC4FD322461A9900BC4FEC /* ForecastFullTableViewController.swift in Sources */,
-				EFFC4FB32244EFE900BC4FEC /* TestingViewController.swift in Sources */,
 				EFFC4FD5224626B800BC4FEC /* Misc.swift in Sources */,
 				EFFC4FB12244EFE900BC4FEC /* AppDelegate.swift in Sources */,
 			);

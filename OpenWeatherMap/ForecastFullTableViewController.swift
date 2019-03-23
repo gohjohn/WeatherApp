@@ -18,7 +18,6 @@ class ForecastFullTableViewController: UITableViewController {
         super.viewDidLoad()
         
         refresh("")
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Loading")
     }
     @IBAction func refresh(_ sender: Any) {
         guard !isLoading else { return }
@@ -27,6 +26,7 @@ class ForecastFullTableViewController: UITableViewController {
         self.tableView.reloadData()
         Api.getWeather(success: { (data) in
             self.data = data
+            NSKeyedArchiver.archivedData(withRootObject: <#T##Any#>)
             self.isLoading = false
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -60,6 +60,8 @@ class ForecastFullTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Loading", for: indexPath)
+            let spinner = cell.viewWithTag(301) as! UIActivityIndicatorView
+            spinner.startAnimating()
             return cell
         }
         guard indexPath.section - 1 < data.count else{
@@ -73,7 +75,10 @@ class ForecastFullTableViewController: UITableViewController {
             let temperatureLabel = cell.viewWithTag(103) as! UILabel
             let imageView = cell.viewWithTag(104) as! UIImageView
             
-            dateLabel.text = cellData["dt_txt"] as? String ?? "-"
+            if let dateInterval = cellData["dt"] as? Double{
+                let date = Date(timeIntervalSince1970: dateInterval)
+                dateLabel.text = Misc.dateFormatter.string(from: date)
+            }else { dateLabel.text = "-" }
             
             if let main = cellData["main"] as? [String: Double],
                 let mainTemperature = main["temp"]{
