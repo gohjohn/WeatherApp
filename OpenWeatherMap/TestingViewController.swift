@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TestingViewController.swift
 //  OpenWeatherMap
 //
 //  Created by John Goh on 22/3/19.
@@ -49,7 +49,9 @@
     e) Test iPad and iPhone UI
     e) If I have time, write some tests
  
- 6) Right now, am reaching the 1 hour mark
+ 6) Right now, am reaching the 1 hour mark. Commiting code.
+ 
+ 7) 1h 45min mark. I just finished pulling the data.
  
  
  
@@ -61,13 +63,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TestingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    @IBAction func test(){
+        Api.getWeather(success: { (data) in
+            
+            //TODO
+        }) { (error) in
+            print(error)
+            //TODO show error
+        }
+    }
 
 }
 
