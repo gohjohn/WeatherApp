@@ -13,8 +13,10 @@
 		EFFC4FBB2244EFEC00BC4FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFC4FB92244EFEC00BC4FEC /* LaunchScreen.storyboard */; };
 		EFFC4FC62244EFEC00BC4FEC /* OpenWeatherMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FC52244EFEC00BC4FEC /* OpenWeatherMapTests.swift */; };
 		EFFC4FD12245E6C000BC4FEC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD02245E6C000BC4FEC /* Api.swift */; };
-		EFFC4FD322461A9900BC4FEC /* ForecastFullTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD222461A9900BC4FEC /* ForecastFullTableViewController.swift */; };
+		EFFC4FD322461A9900BC4FEC /* ForecastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD222461A9900BC4FEC /* ForecastTableViewController.swift */; };
 		EFFC4FD5224626B800BC4FEC /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD4224626B800BC4FEC /* Misc.swift */; };
+		EFFC4FD8224637C000BC4FEC /* Weather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FD6224637C000BC4FEC /* Weather.xcdatamodeld */; };
+		EFFC4FFD22463BF900BC4FEC /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFC4FFC22463BF900BC4FEC /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +40,10 @@
 		EFFC4FC52244EFEC00BC4FEC /* OpenWeatherMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapTests.swift; sourceTree = "<group>"; };
 		EFFC4FC72244EFEC00BC4FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFFC4FD02245E6C000BC4FEC /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		EFFC4FD222461A9900BC4FEC /* ForecastFullTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastFullTableViewController.swift; sourceTree = "<group>"; };
+		EFFC4FD222461A9900BC4FEC /* ForecastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewController.swift; sourceTree = "<group>"; };
 		EFFC4FD4224626B800BC4FEC /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		EFFC4FD7224637C000BC4FEC /* Weather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weather.xcdatamodel; sourceTree = "<group>"; };
+		EFFC4FFC22463BF900BC4FEC /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +86,11 @@
 			isa = PBXGroup;
 			children = (
 				EFFC4FB02244EFE900BC4FEC /* AppDelegate.swift */,
-				EFFC4FD4224626B800BC4FEC /* Misc.swift */,
-				EFFC4FD222461A9900BC4FEC /* ForecastFullTableViewController.swift */,
 				EFFC4FB42244EFE900BC4FEC /* Main.storyboard */,
+				EFFC4FD222461A9900BC4FEC /* ForecastTableViewController.swift */,
+				EFFC4FD6224637C000BC4FEC /* Weather.xcdatamodeld */,
+				EFFC4FFC22463BF900BC4FEC /* Weather.swift */,
+				EFFC4FD4224626B800BC4FEC /* Misc.swift */,
 				EFFC4FD02245E6C000BC4FEC /* Api.swift */,
 				EFFC4FB72244EFEC00BC4FEC /* Assets.xcassets */,
 				EFFC4FB92244EFEC00BC4FEC /* LaunchScreen.storyboard */,
@@ -204,7 +210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFFC4FD12245E6C000BC4FEC /* Api.swift in Sources */,
-				EFFC4FD322461A9900BC4FEC /* ForecastFullTableViewController.swift in Sources */,
+				EFFC4FD322461A9900BC4FEC /* ForecastTableViewController.swift in Sources */,
+				EFFC4FFD22463BF900BC4FEC /* Weather.swift in Sources */,
+				EFFC4FD8224637C000BC4FEC /* Weather.xcdatamodeld in Sources */,
 				EFFC4FD5224626B800BC4FEC /* Misc.swift in Sources */,
 				EFFC4FB12244EFE900BC4FEC /* AppDelegate.swift in Sources */,
 			);
@@ -471,6 +479,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EFFC4FD6224637C000BC4FEC /* Weather.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EFFC4FD7224637C000BC4FEC /* Weather.xcdatamodel */,
+			);
+			currentVersion = EFFC4FD7224637C000BC4FEC /* Weather.xcdatamodel */;
+			path = Weather.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EFFC4FA52244EFE900BC4FEC /* Project object */;
 }

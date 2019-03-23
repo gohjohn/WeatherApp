@@ -32,7 +32,7 @@
         <!--Forecast-->
         <scene sceneID="xDK-HX-Avp">
             <objects>
-                <tableViewController id="cuc-iZ-rg6" customClass="ForecastFullTableViewController" customModule="OpenWeatherMap" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cuc-iZ-rg6" customClass="ForecastTableViewController" customModule="OpenWeatherMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lhc-BP-hev">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" tag="301" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ge1-yS-Mwf">
-                                            <rect key="frame" x="218.5" y="15" width="20" height="20"/>
+                                            <rect key="frame" x="197" y="15" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>

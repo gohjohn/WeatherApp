@@ -1,5 +1,5 @@
 //
-//  ForecastFullTableViewController.swift
+//  ForecastTableViewController.swift
 //  OpenWeatherMap
 //
 //  Created by John Goh on 23/3/19.
@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-class ForecastFullTableViewController: UITableViewController {
+class ForecastTableViewController: UITableViewController {
     
     var isLoading = false
-    var data : [[String:Any]] = []
+    var data : [Weather] = []
     var expandedSections = Set<Int>()
 
     override func viewDidLoad() {
@@ -23,21 +24,40 @@ class ForecastFullTableViewController: UITableViewController {
         guard !isLoading else { return }
         expandedSections.removeAll()
         isLoading = true
-        self.tableView.reloadData()
+        loadSavedData()
         Api.getWeather(success: { (data) in
-            self.data = data
-            NSKeyedArchiver.archivedData(withRootObject: <#T##Any#>)
-            self.isLoading = false
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                for item in data{
+                    let weatherData = Weather(context: AppDelegate.getContext())
+                    weatherData.configure(weatherData: weatherData, rawData: item)
+                }
+                AppDelegate.saveContext()
+                self.isLoading = false
+                self.loadSavedData()
             }
         }) { (errorMessage) in
-            self.isLoading = false
-            let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-            self.present(alertController, animated: true, completion: nil)
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.isLoading = false
+                let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                self.present(alertController, animated: true, completion: nil)
+                self.loadSavedData()
             }
+        }
+    }
+    
+    func loadSavedData() {
+        let fetchRequest = NSFetchRequest<Weather>(entityName: "Weather")
+        let sort = NSSortDescriptor(key: "dateUnix", ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        let threeHoursAgo = Date().addingTimeInterval(-3 * 60 * 60)
+        fetchRequest.predicate = NSPredicate(format: "dateUnix > %f", threeHoursAgo.timeIntervalSince1970)
+
+        do {
+            data = try AppDelegate.getContext().fetch(fetchRequest)
+            print("Got \(data.count) objects")
+            tableView.reloadData()
+        } catch {
+            print("Fetch failed")
         }
     }
 
@@ -67,7 +87,7 @@ class ForecastFullTableViewController: UITableViewController {
         guard indexPath.section - 1 < data.count else{
             return UITableViewCell()
         }
-        let cellData = self.data[indexPath.section - 1]
+        let weatherData = self.data[indexPath.section - 1]
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Summary", for: indexPath)
             let dateLabel = cell.viewWithTag(101) as! UILabel
@@ -75,30 +95,20 @@ class ForecastFullTableViewController: UITableViewController {
             let temperatureLabel = cell.viewWithTag(103) as! UILabel
             let imageView = cell.viewWithTag(104) as! UIImageView
             
-            if let dateInterval = cellData["dt"] as? Double{
-                let date = Date(timeIntervalSince1970: dateInterval)
+            if weatherData.dateUnix > 0{
+                let date = Date(timeIntervalSince1970: weatherData.dateUnix)
                 dateLabel.text = Misc.dateFormatter.string(from: date)
             }else { dateLabel.text = "-" }
             
-            if let main = cellData["main"] as? [String: Double],
-                let mainTemperature = main["temp"]{
-                temperatureLabel.text = String(format:"%.1f °C", mainTemperature)
-            } else { temperatureLabel.text = "-" }
+            temperatureLabel.text = String(format:"%.1f °C", weatherData.temperature)
             
-            if let weather = cellData["weather"] as? [[String: Any]],
-                weather.count > 0,
-                let weatherDescription = weather[0]["description"] as? String,
-                let weatherIconString = weather[0]["icon"] as? String {
-                weatherLabel.text = weatherDescription.capitalizingFirstLetter()
-                imageView.image = nil
+            weatherLabel.text = weatherData.weatherDescription?.capitalizingFirstLetter() ?? "-"
+            imageView.image = nil
+            if let weatherIconString = weatherData.weatherIcon{
                 let imageUrlString = String(format:"https://openweathermap.org/img/w/%@.png", weatherIconString)
                 if let imageUrl = URL(string: imageUrlString){
                     imageView.load(url: imageUrl)
                 }
-                
-            }else{
-                weatherLabel.text = "-"
-                imageView.image = nil
             }
             
             return cell
@@ -112,29 +122,12 @@ class ForecastFullTableViewController: UITableViewController {
             let cloudinessLabel = cell.viewWithTag(205) as! UILabel
             let windLabel = cell.viewWithTag(206) as! UILabel
             
-            if let main = cellData["main"] as? [String: Double]{
-                if let mainTemperature = main["temp"]{
-                    temperatureLabel.text = String(format:"%.1f °C", mainTemperature)
-                }else { temperatureLabel.text = "-" }
-                if let maxTemperature = main["temp_max"]{
-                    maxTemperatureLabel.text = String(format:"%.1f °C", maxTemperature)
-                }else { maxTemperatureLabel.text = "-" }
-                if let minTemperature = main["temp_min"]{
-                    minTemperatureLabel.text = String(format:"%.1f °C", minTemperature)
-                }else { minTemperatureLabel.text = "-" }
-                if let humidity = main["temp"]{
-                    humidityLabel.text = String(format:"%.1f%%", humidity)
-                }else { humidityLabel.text = "-" }
-            }
-            if let clouds = cellData["clouds"] as? [String: Double],
-                let cloudiness = clouds["all"]{
-                cloudinessLabel.text = String(format:"%.1f%%", cloudiness)
-            }else { cloudinessLabel.text = "-" }
-            if let wind = cellData["wind"] as? [String: Double],
-                let windSpeed = wind["speed"],
-                let windDirection = wind["deg"]{
-                windLabel.text = String(format:"%.1fm/s %@", windSpeed, Misc.directionToString(direction: windDirection))
-            }else { windLabel.text = "-" }
+            temperatureLabel.text = String(format:"%.1f °C", weatherData.temperature)
+            maxTemperatureLabel.text = String(format:"%.1f °C", weatherData.temperatureMax)
+            minTemperatureLabel.text = String(format:"%.1f °C", weatherData.temperatureMin)
+            humidityLabel.text = String(format:"%.1f%%", weatherData.humidity)
+            cloudinessLabel.text = String(format:"%.1f%%", weatherData.cloudiness)
+            windLabel.text = String(format:"%.1fm/s %@", weatherData.windSpeed, Misc.directionToString(direction: weatherData.windDirection))
             
             return cell
         }
