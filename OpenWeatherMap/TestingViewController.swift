@@ -53,6 +53,12 @@
  
  7) 1h 45min mark. I just finished pulling the data.
  
+ 8) 2h 10min mark. I realized I need another screen.
+ The previous idea was a screen that summarized weather per day.
+ I need a 3hr forecast screen where i will just put all the data.
+ 
+ Commiting code.
+ 
  
  
  
