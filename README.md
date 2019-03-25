@@ -9,5 +9,6 @@ To run:
 2) Fix any provisioning profile issues
 3) Run the app on a simulator or physical device
 
+# Screenshot example
+![Screenshot](https://raw.githubusercontent.com/gohjohn/WeatherApp/master/Screenshot.png)
 
-Thank you for your time.
